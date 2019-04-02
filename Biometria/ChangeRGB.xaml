@@ -1,0 +1,26 @@
+﻿<Window x:Class="Biometria.RGB"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Biometria"
+        mc:Ignorable="d"
+        Title="RGB" Height="100" Width="250">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Height="30">
+            <Label x:Name="Rlabel" Content="R:"  />
+            <TextBox x:Name="RtextBlock" Width="40" Height="20" TextChanged="textBlockChanged"/>
+            <Label x:Name="Glabel" Content="G:" />
+            <TextBox x:Name="GtextBlock" Width="40" Height="20" TextChanged="textBlockChanged" />
+            <Label x:Name="Blabel" Content="B:" />
+            <TextBox x:Name="BtextBlock" Width="40" Height="20" TextChanged="textBlockChanged"/>
+            <Rectangle x:Name="RGBrect" Fill="#FFFFFF" Stroke="Black" Width="20" Height="20" Margin=" 5" />
+        </StackPanel>
+        <Button x:Name="ChangeRGBbutton" Grid.Row="1" Width="50" HorizontalAlignment="Left" Margin="5" Content="Zmień" Click="ChangeRGBbutton_Click"/>
+
+    </Grid>
+</Window>

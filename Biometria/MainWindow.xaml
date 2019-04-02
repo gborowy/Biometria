@@ -7,6 +7,95 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--Row 1 - Menu -->
+        <Menu Width="Auto" Grid.Row="0" Grid.ColumnSpan="2" Margin="2">
+            <MenuItem Header="Plik" Margin="2">
+                <MenuItem Header="Wczytaj obraz" HorizontalAlignment="Left" Width="auto" Margin="1"
+                          Click="LoadImage_Click" />
+                <MenuItem Header="Zapisz obraz" HorizontalAlignment="Left" Width="auto" Margin="1"
+                          Click="SaveImage_Click" />
+            </MenuItem>
+            <MenuItem Header="Skala" Margin="2">
+                <MenuItem Header="Oryginalna skala" HorizontalAlignment="Left" Width="auto" Margin="1"
+                             Click="resetScale_Click"  />
+            </MenuItem>
+            <MenuItem x:Name="RGBHeader" Header="RGB" Margin="2" >
+                <MenuItem x:Name="R" Header="R:" HorizontalAlignment="Left" Width="auto" Margin="1"
+                               />
+                <MenuItem x:Name="G" Header="G:" HorizontalAlignment="Left" Width="auto" Margin="1"
+                               />
+                <MenuItem x:Name="B" Header="B:" HorizontalAlignment="Left" Width="auto" Margin="1"
+                               />
+                <MenuItem Header="Zmień" HorizontalAlignment="Left" Width="auto" Margin="1"
+                             Click="ChangeRGB_Click"  />
+            </MenuItem>
+            <MenuItem x:Name="Histogram" Header="Histogram" Margin="1" Click="Histogram_Click" ></MenuItem>
+        </Menu>
+
+        <!-- Row 2 -->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="19*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Orientation="Horizontal" Margin="1" Grid.ColumnSpan="2">
+                <Label x:Name="ZoomValue" Width="40"></Label>
+                <Button x:Name="ZoomIn" Click="ZoomIn_Click" Margin="1">+</Button>
+                <Button x:Name="ZoomOut" Click="ZoomOut_Click" Margin="1">-</Button>
+                <Label>X:</Label>
+                <Label x:Name="PixelX" Width="30" ></Label>
+                <Label>Y:</Label>
+                <Label x:Name="PixelY" Width="30" ></Label>
+
+
+            </StackPanel>
+        </Grid>
+        <!-- Row 3 -->
+        <Grid Grid.Row="2" Margin="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Oryginal Photo Column-->
+            <Grid Grid.Column="0" Margin="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="0" Content="Original" HorizontalAlignment="Center"/>
+                <Border x:Name="BorderOriginal" Grid.Row="1" BorderBrush="Black" BorderThickness="1">
+                    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                        <Grid>
+                            <Image x:Name="OriginalImage" HorizontalAlignment="Center"  VerticalAlignment="Center" Stretch="None" MouseLeftButtonDown="OriginalImage_MouseDown"  MouseWheel="OriginalImage_MouseWheel" />
+                        </Grid>
+                    </ScrollViewer>
+                </Border>
+            </Grid>
+
+            <!-- Edited Photo Column-->
+            <Grid Grid.Column="1" Margin="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="1*" />
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="0" Content="Edited" HorizontalAlignment="Center"/>
+                <Border Grid.Row="1" BorderBrush="Black" BorderThickness="1">
+                    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                        <Grid>
+                            <Image x:Name="EditedImage" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="None"/>
+                        </Grid>
+                    </ScrollViewer>
+                </Border>
+            </Grid>
+        </Grid>
     </Grid>
 </Window>
